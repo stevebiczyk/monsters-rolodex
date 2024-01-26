@@ -30,11 +30,12 @@ class App extends Component {
   };
 
   render() {
+    // console.log("render from AppJS");
     const { monsters, searchField } = this.state;
     const { onSearchChange } = this;
 
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
     });
 
     return (
@@ -45,13 +46,6 @@ class App extends Component {
           placeholder="Search Monsters"
           onChange={onSearchChange}
         />
-        {/* {filteredMonsters.map((monster) => {
-          return (
-            <div key={monster.id}>
-              <h1>{monster.name}</h1>
-            </div>
-          );
-        })} */}
         <CardList monsters={filteredMonsters} />
       </div>
     );
